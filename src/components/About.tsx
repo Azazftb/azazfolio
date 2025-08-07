@@ -47,7 +47,7 @@ export default function About() {
         {/* Right - Text Content */}
         <div className="text-center lg:text-left max-w-xl">
           <h2 className="text-4xl font-bold mb-6 leading-tight">
-            I'm a <span className="text-white/90 font-extrabold">cybersecurity-focused developer</span> and{' '}
+            I&#39;m Azaz <span className="text-white/90 font-extrabold">cybersecurity-focused developer</span> and{' '}
             <span className="text-white/90 font-extrabold">AI enthusiast</span> based in Waterloo!
           </h2>
           <p className="text-gray-400 text-lg leading-relaxed mb-6">
