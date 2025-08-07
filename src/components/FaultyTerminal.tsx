@@ -1,6 +1,7 @@
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 import { useEffect, useRef, useMemo, useCallback } from "react";
 
+
 const vertexShader = `
 attribute vec2 position;
 attribute vec2 uv;
@@ -222,6 +223,26 @@ function hexToRgb(hex: string): [number, number, number] {
   ];
 }
 
+interface FaultyTerminalProps extends React.HTMLAttributes<HTMLDivElement> {
+  scale?: number;
+  gridMul?: [number, number];
+  digitSize?: number;
+  timeScale?: number;
+  pause?: boolean;
+  scanlineIntensity?: number;
+  glitchAmount?: number;
+  flickerAmount?: number;
+  noiseAmp?: number;
+  chromaticAberration?: number;
+  dither?: number | boolean;
+  curvature?: number;
+  tint?: string;
+  mouseReact?: boolean;
+  mouseStrength?: number;
+  pageLoadAnimation?: boolean;
+  brightness?: number;
+}
+
 
 export default function FaultyTerminal({
   scale = 1,
@@ -244,16 +265,17 @@ export default function FaultyTerminal({
   className,
   style,
   ...rest
-}) {
-  const containerRef = useRef(null);
-  const programRef = useRef(null);
-  const rendererRef = useRef(null);
-  const mouseRef = useRef({ x: 0.5, y: 0.5 });
-  const smoothMouseRef = useRef({ x: 0.5, y: 0.5 });
-  const frozenTimeRef = useRef(0);
-  const rafRef = useRef(0);
-  const loadAnimationStartRef = useRef(0);
-  const timeOffsetRef = useRef(Math.random() * 100);
+}: FaultyTerminalProps) {
+const containerRef = useRef<HTMLDivElement | null>(null);
+const programRef = useRef<Program | null>(null);
+const rendererRef = useRef<Renderer | null>(null);
+const mouseRef = useRef<{ x: number; y: number }>({ x: 0.5, y: 0.5 });
+const smoothMouseRef = useRef<{ x: number; y: number }>({ x: 0.5, y: 0.5 });
+const frozenTimeRef = useRef<number>(0);
+const rafRef = useRef<number>(0);
+const loadAnimationStartRef = useRef<number>(0);
+const timeOffsetRef = useRef<number>(Math.random() * 100);
+
 
   const tintVec = useMemo(() => hexToRgb(tint), [tint]);
 
@@ -265,14 +287,14 @@ export default function FaultyTerminal({
     ? Math.min(window.devicePixelRatio || 1, 2)
     : 1;
 
-  const handleMouseMove = useCallback((e) => {
-    const ctn = containerRef.current;
-    if (!ctn) return;
-    const rect = ctn.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = 1 - (e.clientY - rect.top) / rect.height;
-    mouseRef.current = { x, y };
-  }, []);
+const handleMouseMove = useCallback((e: MouseEvent) => {
+  const ctn = containerRef.current;
+  if (!ctn) return;
+  const rect = ctn.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width;
+  const y = 1 - (e.clientY - rect.top) / rect.height;
+  mouseRef.current = { x, y };
+}, []);
 
   useEffect(() => {
     const ctn = containerRef.current;
@@ -340,7 +362,7 @@ export default function FaultyTerminal({
     resizeObserver.observe(ctn);
     resize();
 
-    const update = (t) => {
+const update = (t: number) => {
       rafRef.current = requestAnimationFrame(update);
 
       if (pageLoadAnimation && loadAnimationStartRef.current === 0) {
