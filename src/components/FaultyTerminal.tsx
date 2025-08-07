@@ -207,7 +207,7 @@ void main() {
 }
 `;
 
-function hexToRgb(hex) {
+function hexToRgb(hex: string): [number, number, number] {
   let h = hex.replace("#", "").trim();
   if (h.length === 3)
     h = h
@@ -221,6 +221,7 @@ function hexToRgb(hex) {
     (num & 255) / 255,
   ];
 }
+
 
 export default function FaultyTerminal({
   scale = 1,
