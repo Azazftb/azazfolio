@@ -5,6 +5,7 @@ export interface Project {
   image: string;
   github: string;
   live?: string;
+  tech?: string[];
 }
 
 export const projects: Project[] = [
