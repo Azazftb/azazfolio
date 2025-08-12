@@ -27,7 +27,7 @@ body {
 
 html { scroll-behavior: smooth; }
 
-/* ---------- Animations ---------- */
+/* -------- Animations ---------- */
 @keyframes gradient-slow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -51,7 +51,7 @@ html { scroll-behavior: smooth; }
 }
 .animate-press { animation: press 0.25s ease; }
 
-/* ---------- Stars ---------- */
+/* -------- Stars ---------- */
 .star0 { height: 1px; width: 1px; opacity: 1; position: absolute; }
 .star1 { height: 2px; width: 2px; border-radius: 50%; opacity: 1; position: absolute; }
 .star2 { height: 3px; width: 3px; border-radius: 50%; opacity: 1; position: absolute; }
@@ -67,7 +67,7 @@ html { scroll-behavior: smooth; }
   background: linear-gradient(135deg, #001e3c, #5e60ce, #bf622c, #240046);
   background-size: 400% 400%;
   animation: swirl 20s ease infinite;
-  opacity: 0.18; /* toned down so content pops */
+  opacity: 0.18; 
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -92,7 +92,7 @@ html { scroll-behavior: smooth; }
   pointer-events: none;
 }
 
-/* ---------- New utility & a11y helpers ---------- */
+/* ------  utility & a11y helpers ---------- */
 .radial-mask {
   mask-image: radial-gradient(70% 60% at 50% 50%, #000 65%, transparent 100%);
   -webkit-mask-image: radial-gradient(70% 60% at 50% 50%, #000 65%, transparent 100%);
@@ -114,13 +114,12 @@ html { scroll-behavior: smooth; }
   }
 }
 
-/* ---------- New additions ---------- */
 /* Subtle text halo for better contrast over bright stars */
 .heading-glow {
   text-shadow: 0 1px 0 rgba(0,0,0,0.35), 0 8px 24px rgba(0,0,0,0.35);
 }
 
-/* Compact button style for mobile screens */
+/* Button style for mobile screens */
 @media (max-width: 640px) {
   .btn-compact {
     letter-spacing: 0.01em;

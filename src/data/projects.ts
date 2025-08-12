@@ -31,7 +31,7 @@ A machine learning project focused on detecting lung cancer using CT scan images
 {
   title: "Economic Pulse",
   subtitle: "Visualizing Sectoral Trends Post-Crisis",
-  image: "/images/economic-pulse.jpg", // Make sure you add this image!
+  image: "/images/economic-pulse.jpg", // image
   github: "https://github.com/Azazftb/Econmic-Developement",
   tech: ["Python", "Jupyter Notebook", "Matplotlib", "Plotly", "Data Visualization"],
   description: `
@@ -52,7 +52,7 @@ A data visualization project showing and analyzing employment trends across Cana
 {
   title: "D2L++ ",
   subtitle: "Chrome Extension for Brightspace Productivity",
-  image: "/images/d2lpp-extension.png", // Add this screenshot to public/images/
+  image: "/images/d2lpp-extension.png", // image
   github: "https://github.com/Azazftb/D2L_PP",
   live: "https://chromewebstore.google.com/detail/d2l++/ldfpkhphkekoooibkdphjpdcmckbhpha",
   tech: ["JavaScript", "HTML", "CSS", "Chrome Extension"],
@@ -76,7 +76,7 @@ A Chrome extension designed to enhance the Brightspace LMS experience, with over
 {
   title: "TCHKPK",
   subtitle: "Responsive Web Development for Local Healthcare",
-  image: "/images/tchkpk-website.jpg", // Add your screenshot here
+  image: "/images/tchkpk-website.jpg", // image
   github: "", // Contract work, no public repo
   live: "https://tchkpk.com/",
   tech: ["HTML", "CSS", "JavaScript", "Responsive Design", "Accessibility"],

@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 type Star = { x: number; y: number; vx: number; size: number; alpha: number };
 
 type Props = {
-  /** default = lively (Hero), calm = fewer/slower stars + edge fade (Contact) */
+  /** default = lively (Hero), calm = fewer slower stars + edge fade in contacts */
   variant?: 'default' | 'calm';
 };
 
@@ -15,15 +15,15 @@ export default function UniverseBackground({ variant = 'default' }: Props) {
   const starsRef = useRef<Star[]>([]);
   const sizeRef = useRef({ w: 0, h: 0, dpr: 1 });
   const cfgRef = useRef({
-    edgeFadeFrac: 0,            // 0 = no vertical fade
+    edgeFadeFrac: 0,            
     baseAlphaMin: 0.5,
     baseAlphaMax: 1.0,
-    speedMin: 0.04,             // px per frame (CSS units)
+    speedMin: 0.04,             
     speedMax: 0.70,
     mobile: 250,
     tablet: 600,
     desktop: 1000,
-    glowThreshold: 1.4,         // size above which we add a soft glow
+    glowThreshold: 1.4,         
   });
 
   useEffect(() => {
@@ -122,7 +122,7 @@ export default function UniverseBackground({ variant = 'default' }: Props) {
           s.y = Math.random() * h;
         }
 
-        // edge fade (top/bottom), 1.0 in center, ramps to 0 near edges
+        // edge fade (top/bottom), 1.0 in center
         let fade = 1;
         if (fadeH > 0) {
           if (s.y < fadeH) fade = s.y / fadeH;
@@ -158,7 +158,7 @@ export default function UniverseBackground({ variant = 'default' }: Props) {
     };
     const initId = requestAnimationFrame(init);
 
-    // Pause rAF when hidden; resume cleanly
+    // Pause raf when hidden
     const onVis = () => {
       if (document.visibilityState === 'hidden') {
         if (rafRef.current) cancelAnimationFrame(rafRef.current);
