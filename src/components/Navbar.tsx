@@ -44,7 +44,6 @@ export default function Navbar() {
     };
   }, []);
 
-  // Close mobile menu when hash changes
   useEffect(() => {
     const onHash = () => setIsOpen(false);
     window.addEventListener('hashchange', onHash);
@@ -58,8 +57,8 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-white/10 shadow-sm">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-white sm:px-8">
+  <header className="fixed top-0 left-0 w-full z-50 h-16 sm:h-20 backdrop-blur-md bg-black/40 border-b border-white/10 shadow-sm">
+    <nav className="mx-auto flex h-full max-w-6xl items-center justify-between px-6 text-white sm:px-8">
         {/* Logo / Name */}
         <a
           href="#hero"
