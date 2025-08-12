@@ -24,25 +24,21 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+html { scroll-behavior: smooth; }
+
+/* ---------- Animations ---------- */
 @keyframes gradient-slow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
-.animate-gradient-slow {
-  animation: gradient-slow 3s ease infinite;
-}
+.animate-gradient-slow { animation: gradient-slow 3s ease infinite; }
 
 @keyframes gradientShift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
-
 .animate-gradient-smooth {
   background-size: 300% 300%;
   animation: gradientShift 10s ease infinite;
@@ -53,11 +49,87 @@ body {
   50% { transform: translateY(2px); }
   100% { transform: translateY(0); }
 }
+.animate-press { animation: press 0.25s ease; }
 
-.animate-press {
-  animation: press 0.25s ease;
+/* ---------- Stars ---------- */
+.star0 { height: 1px; width: 1px; opacity: 1; position: absolute; }
+.star1 { height: 2px; width: 2px; border-radius: 50%; opacity: 1; position: absolute; }
+.star2 { height: 3px; width: 3px; border-radius: 50%; opacity: 1; position: absolute; }
+.star3 { height: 4px; width: 4px; border-radius: 50%; opacity: 1; position: absolute; }
+
+/* ---------- Background overlays ---------- */
+@keyframes swirl {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
-html {
-  scroll-behavior: smooth;
+.gradient-bg {
+  background: linear-gradient(135deg, #001e3c, #5e60ce, #bf622c, #240046);
+  background-size: 400% 400%;
+  animation: swirl 20s ease infinite;
+  opacity: 0.18; /* toned down so content pops */
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
+
+@keyframes cyber-scan {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+.cyber-bg {
+  background:
+    repeating-linear-gradient(90deg, rgba(0,255,255,0.04) 0 1px, transparent 1px 20px),
+    repeating-linear-gradient(0deg,  rgba(0,255,255,0.04) 0 1px, transparent 1px 20px),
+    linear-gradient(135deg, #1c9e8d, #302b63, #24243e);
+  background-size: 100% 100%;
+  animation: cyber-scan 30s ease infinite;
+  opacity: 0.25;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---------- New utility & a11y helpers ---------- */
+.radial-mask {
+  mask-image: radial-gradient(70% 60% at 50% 50%, #000 65%, transparent 100%);
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 50%, #000 65%, transparent 100%);
+}
+
+.will-change-transform { will-change: transform, opacity; }
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.65);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient-slow,
+  .animate-gradient-smooth,
+  .gradient-bg,
+  .cyber-bg {
+    animation: none !important;
+  }
+}
+
+/* ---------- New additions ---------- */
+/* Subtle text halo for better contrast over bright stars */
+.heading-glow {
+  text-shadow: 0 1px 0 rgba(0,0,0,0.35), 0 8px 24px rgba(0,0,0,0.35);
+}
+
+/* Compact button style for mobile screens */
+@media (max-width: 640px) {
+  .btn-compact {
+    letter-spacing: 0.01em;
+    padding-inline: 1.125rem;
+    padding-block: 0.65rem;
+  }
+}
+
+
+
+
 
